@@ -46,6 +46,7 @@ public class pageController {
         key_skills = request.getParameter("key_skills");
         SuperJob superJob = new SuperJob();
         List<String> resultLinks = superJob.startSearch();
+        modelAndView.addObject("resultList", resultLinks);
         return modelAndView;
     }
 

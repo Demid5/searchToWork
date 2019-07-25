@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: demid5
@@ -36,6 +37,12 @@
     Ключевые навыки: <input name="key_skills" />
     <br><br>
     <p><input type="submit" value="Поиск"></p>
+    <br><br>
+    Список кандидатов на работу по заданным критериям: <ul>
+    <c:forEach var="per" items="${resultList}">
+      <li>${per}</li>
+    </c:forEach>
+</ul>
 </form>
 </body>
 </html>
