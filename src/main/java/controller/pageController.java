@@ -1,5 +1,8 @@
 package controller;
 
+import model.jobs.SuperJob;
+
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,9 +12,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class pageController {
+
 
 
 
@@ -39,6 +44,8 @@ public class pageController {
         opit = request.getParameter("experience");
         education = request.getParameter("education");
         key_skills = request.getParameter("key_skills");
+        SuperJob superJob = new SuperJob();
+        List<String> resultLinks = superJob.startSearch();
         return modelAndView;
     }
 
