@@ -17,8 +17,15 @@ import java.util.List;
 public abstract class JobSite {
 
     private static HttpURLConnection connection;
-    private static String openBracket = "%5B";
-    private static String closeBracket = "%5D";
+
+
+    abstract public void setKey_skills(String skills);
+
+    abstract public void setProf(String prof);
+
+    abstract public void setOpit(String opit);
+
+    abstract public void setEducation(String education);
 
 
     // следующие абстрактные методы нужны для составления url-запроса
@@ -29,9 +36,11 @@ public abstract class JobSite {
 
     abstract public String getEducation();
 
-    abstract public String keyWords();
+    abstract public String getKey_skills();
 
-    abstract public String keySkills();
+    abstract public String getProf();
+
+    abstract public String[] getOpit();
     //
 
     private static String requestToWebsait(String urlToRead) {
@@ -46,7 +55,6 @@ public abstract class JobSite {
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             int status = connection.getResponseCode();
-            System.out.println("response code = " + status);
 
 
             if (status > 299) {

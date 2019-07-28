@@ -16,14 +16,6 @@ import java.util.List;
 
 @Controller
 public class pageController {
-
-
-
-
-    private static String key_skills;
-    private static String prof;
-    private static String opit;
-    private static String education;
     private static String[] jobsaits;
 
 
@@ -40,11 +32,11 @@ public class pageController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainPage");
         jobsaits = request.getParameterValues("websait");
-        prof = request.getParameter("profession");
-        opit = request.getParameter("experience");
-        education = request.getParameter("education");
-        key_skills = request.getParameter("key_skills");
         SuperJob superJob = new SuperJob();
+        superJob.setProf(request.getParameter("profession"));
+        superJob.setEducation(request.getParameter("education"));
+        superJob.setKey_skills(request.getParameter("key_skills"));
+        superJob.setOpit(request.getParameter("experience"));
         List<String> resultLinks = superJob.startSearch();
         modelAndView.addObject("resultList", resultLinks);
         return modelAndView;

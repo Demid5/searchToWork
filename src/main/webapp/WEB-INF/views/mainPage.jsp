@@ -9,10 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Сорсинг кандидатов на работу</title>
+    <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
+<h1>Сорсинг кандидатов на работу</h1>
+<div id="blockCriteries">
 <form action="/" method="POST">
     <p>В каких сайтах будем искать</p>
     <p><input type="checkbox" name="websait" value="HH.RU">HH.RU   <input type="checkbox" name="websait" value="SuperJob.ru"> SuperJob.ru   <input type="checkbox" name="websait" value="GorodRabot.ru">GorodRabot.ru</p>
@@ -33,16 +35,25 @@
     <option>От 3 до 6 лет</option>
     <option>Более 6 лет</option>
 </select>
+
     <br><br>
     Ключевые навыки: <input name="key_skills" />
     <br><br>
     <p><input type="submit" value="Поиск"></p>
     <br><br>
-    Список кандидатов на работу по заданным критериям: <ul>
-    <c:forEach var="per" items="${resultList}">
-      <li>${per}</li>
-    </c:forEach>
-</ul>
+
+
 </form>
+</div>
+
+<div id="resultLink">
+    <p id="textResultLinks"> Список кандидатов на работу по заданным критериям: </p>
+    <ol>
+        <c:forEach var="per" items="${resultList}">
+            <li> <a href=${per}>${per}</a> </li>
+        </c:forEach>
+    </ol>
+</div>
+
 </body>
 </html>
