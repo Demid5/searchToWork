@@ -1,6 +1,7 @@
 package controller;
 
-import model.jobs.SuperJob;
+import model.jobs.HHRU;
+
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -32,12 +33,12 @@ public class pageController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainPage");
         jobsaits = request.getParameterValues("websait");
-        SuperJob superJob = new SuperJob();
-        superJob.setProf(request.getParameter("profession"));
-        superJob.setEducation(request.getParameter("education"));
-        superJob.setKey_skills(request.getParameter("key_skills"));
-        superJob.setOpit(request.getParameter("experience"));
-        List<String> resultLinks = superJob.startSearch();
+        HHRU hhru = new HHRU();
+        hhru.setProf(request.getParameter("profession"));
+        hhru.setEducation(request.getParameter("education"));
+        hhru.setKey_skills(request.getParameterValues("skill"));
+        hhru.setOpit(request.getParameter("experience"));
+        List<String> resultLinks = hhru.run();
         modelAndView.addObject("resultList", resultLinks);
         return modelAndView;
     }

@@ -16,10 +16,11 @@ import java.util.List;
 
 public abstract class JobSite {
 
+
     private static HttpURLConnection connection;
 
 
-    abstract public void setKey_skills(String skills);
+    abstract public void setKey_skills(String[] skills);
 
     abstract public void setProf(String prof);
 
@@ -40,7 +41,7 @@ public abstract class JobSite {
 
     abstract public String getProf();
 
-    abstract public String[] getOpit();
+    abstract public String getOpit();
     //
 
     private static String requestToWebsait(String urlToRead) {
