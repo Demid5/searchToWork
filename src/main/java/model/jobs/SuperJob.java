@@ -16,6 +16,7 @@ import java.util.TreeMap;
 public class SuperJob extends JobSite {
     private static final String basicURL = "https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?";
 
+
     private static HttpURLConnection connection;
 
 
@@ -91,11 +92,11 @@ public class SuperJob extends JobSite {
         educationMap.put("не имеет значения", 6);
 
         experienceMap = new TreeMap<>();
-        experienceMap.put("не имеет значения", null);
-        experienceMap.put("От 1 года до 3 лет", "&experience_from=1&experience_to=3");
-        experienceMap.put("От 3 до 6 лет", "&experience_from=3&experience_to=6");
-        experienceMap.put("нет опыта", null);
-
+        experienceMap.put("не имеет значения", "");
+        experienceMap.put("От 1 года до 3 лет", "&experience_from=12&experience_to=36");
+        experienceMap.put("От 3 до 6 лет", "&experience_from=36&experience_to=72");
+        experienceMap.put("Более 6 лет", "&experience_from=72");
+        experienceMap.put("нет опыта", "&experience_to=0");
     }
 
 
@@ -133,11 +134,10 @@ public class SuperJob extends JobSite {
     @Override
     public void setKeySkills(String[] skills) {
         StringBuilder builderSkills = new StringBuilder();
-        countCondition += (skills.length - 1);
         for (String skill: skills) {
             builderSkills.append("&keywords[" + countCondition + "][srws]=3&keywords[" + countCondition +
-                    "][skwc]=and&keywords[" + countCondition + "][keys]=" + skill);
-            countCondition--;
+                    "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(skill));
+            countCondition++;
         }
         this.keySkills = builderSkills.toString();
     }

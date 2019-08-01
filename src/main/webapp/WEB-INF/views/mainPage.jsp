@@ -17,7 +17,7 @@
 <div id="blockCriteries">
 <form action="/" method="POST">
     <p>В каких сайтах будем искать</p>
-    <p><input type="checkbox" name="websait" value="HH.RU">HH.RU   <input type="checkbox" name="websait" value="SuperJob.ru"> SuperJob.ru   <input type="checkbox" name="websait" value="GorodRabot.ru">GorodRabot.ru</p>
+    <p><input type="checkbox" name="websait" value="HHRU">HH.RU   <input type="checkbox" name="websait" value="SuperJob"> SuperJob.ru   <input type="checkbox" name="websait" value="GorodRabot.ru">GorodRabot.ru</p>
 
     <br><br>
     Название профессии: <input name="profession" />

@@ -6,11 +6,10 @@ public abstract class JobSite {
     abstract protected String getBasicURL();
 
     public String buildURL() {
-        return getBasicURL() + getEducation() + getKeySkills() + getProf() + getExperience();
+        return getBasicURL() + getEducation() + getProf() + getKeySkills()  + getExperience();
     }
 
     abstract public List<String> organizationLinks();
-
 
     /* getters and setters
     * */
