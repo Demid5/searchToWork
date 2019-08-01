@@ -3,6 +3,8 @@ package controller;
 import model.jobs.HHRU;
 
 
+import model.jobs.JobSite;
+import model.jobs.SuperJob;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,18 +29,19 @@ public class pageController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ModelAndView allFilmss(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainPage");
+
         jobsaits = request.getParameterValues("websait");
-        HHRU hhru = new HHRU();
+
+        JobSite hhru = new SuperJob();
         hhru.setProf(request.getParameter("profession"));
         hhru.setEducation(request.getParameter("education"));
-        hhru.setKey_skills(request.getParameterValues("skill"));
-        hhru.setOpit(request.getParameter("experience"));
-        List<String> resultLinks = hhru.run();
+        hhru.setKeySkills(request.getParameterValues("skill"));
+        hhru.setExperience(request.getParameter("experience"));
+        List<String> resultLinks = hhru.organizationLinks();
         modelAndView.addObject("resultList", resultLinks);
         return modelAndView;
     }

@@ -5,56 +5,29 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.servlet.ServletContext;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.TreeMap;
 
 public class HHRU extends JobSite {
-    static private String basicURL = "https://hh.ru";
+    static private String basicUrl = "https://hh.ru";
+    static private final String basicURL = "https://hh.ru/search/resume?";
 
     private static TreeMap<String, Integer> skill;
     private static TreeMap<String, String> educationMap;
     private static TreeMap<String, String> experienceMap;
 
-    private static String[] key_skills;
-    private static String prof;
-    private static String opit;
+    private static String keySkills;
+    private static String profession;
+    private static String experience;
     private static String education;
 
     public HHRU() {
-        skill = new TreeMap<>();
-        skill.put("Java", 3093);
-        skill.put("Python", 1114);
-        skill.put("C++", 231);
-        skill.put("C#", 230);
-        skill.put("PHP", 3750);
-        skill.put("JavaScript", 674);
-        skill.put("HTML", 598);
-        skill.put("HTML5", 7161);
-        skill.put("CSS3", 3512);
-        skill.put("CSS", 351);
-        skill.put("Android", 7892);
-        skill.put("Spring Framework", 1250);
-        skill.put("Git", 3215);
-        skill.put("SQL", 1252);
-        skill.put("MySQL", 893);
-        skill.put("MS SQL", 871);
-        skill.put("PostgreSQL", 1063);
-        skill.put("Hibernate", 585);
-        skill.put("Управление проектами", 2924);
-        skill.put("Работа в команде", 4118);
-        skill.put("Английский язык", 5488);
-        skill.put("ООП", 2350);
-        skill.put("Linux", 730);
-        skill.put("Adobe Photoshop", 87);
-        skill.put("XML", 1460);
-        skill.put("jQuery", 687);
-        skill.put("Apache Maven", 106482);
-        skill.put("Altassian Jira", 142);
-        skill.put("BootStrap", 3641);
-        skill.put("Ajax", 3640);
-        skill.put("REST", 30565);
 
         educationMap = new TreeMap<>();
         educationMap.put("высшее", "higher");
@@ -70,67 +43,8 @@ public class HHRU extends JobSite {
     }
 
 
-    @Override
-    public void setKey_skills(String[] skills) {
-        this.key_skills = new String[skills.length];
-        for (int i = 0; i < skills.length; ++i) {
-            key_skills[i] = String.valueOf(skill.get(skills[i]));
-        }
-    }
 
-    @Override
-    public void setProf(String prof) {
-        this.prof = prof;
-    }
-
-    @Override
-    public void setOpit(String opit) {
-        this.opit = experienceMap.get(opit);
-    }
-
-    @Override
-    public void setEducation(String education) {
-        this.education = educationMap.get(education);
-    }
-
-    @Override
-    public String getBasicURL() {
-        return basicURL;
-    }
-
-    @Override
-    public String buildURL() {
-        StringBuilder current = new StringBuilder("https://hh.ru/search/resume?");
-        current.append(getProf()).append(getKey_skills()).append(getEducation()).append(getOpit());
-        return current.toString();
-    }
-
-    @Override
-    public String getEducation() {
-        return "&education=" + this.education;
-    }
-
-    @Override
-    public String getKey_skills() {
-        StringBuilder resultSkill = new StringBuilder();
-        for (int i = 0; i < key_skills.length; ++i) {
-            resultSkill.append("&skill=" + key_skills[i]);
-        }
-        return resultSkill.toString();
-    }
-
-    @Override
-    public String getProf() {
-        return "&text=" + this.prof;
-    }
-
-    @Override
-    public String getOpit() {
-        return "&experience=" + this.opit;
-    }
-
-
-    public List<String> run() {
+    public List<String> organizationLinks() {
         String url = buildURL();
         List<String> resultLinks = new LinkedList<>();
         boolean flag = true;
@@ -144,12 +58,12 @@ public class HHRU extends JobSite {
 
                 for (Element elem : element.select("a")) {
                     if (!elem.text().equals("")) {
-                         resultLinks.add(basicURL + elem.attr("href"));
+                        resultLinks.add(basicUrl + elem.attr("href"));
                     }
                 }
 
                 try {
-                    url = basicURL + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
+                    url = basicUrl + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
                 }catch (NullPointerException e) {
                     flag = false;
                 }
@@ -160,4 +74,72 @@ public class HHRU extends JobSite {
         } while (flag);
         return resultLinks;
     }
+
+
+    @Override
+    public String getBasicURL() {
+        return basicURL;
+    }
+
+
+    static private String convertStringText(String text) {
+        String plusSign = "\\u002B";
+        String resultText = text.replaceAll(plusSign, "%2B");
+        resultText = resultText.replaceAll(" ", "+");
+        return resultText.replaceAll("/", "%2F");
+    }
+
+
+    /*
+        * getters and setters */
+    @Override
+    public void setProf(String prof) {
+        this.profession = "&text=" + convertStringText(prof) + "&logic=normal&pos=position&exp_period=all_time";
+    }
+
+
+    @Override
+    public void setEducation(String education) {
+        this.education = "&education=" + educationMap.get(education);
+    }
+
+
+    @Override
+    public void setExperience(String experience) {
+        this.experience = "&experience=" + experienceMap.get(experience);
+    }
+
+
+
+    @Override
+    public void setKeySkills(String[] skills) {
+        StringBuilder builderSkills = new StringBuilder();
+        for (String skill: skills) {
+            builderSkills.append("&text=" + skill + "&logic=normal&pos=keywords&exp_period=all_time");
+        }
+        this.keySkills = builderSkills.toString();
+    }
+
+
+    @Override
+    public String getProf() {
+        return this.profession;
+    }
+
+
+    @Override
+    public String getEducation() {
+        return this.education;
+    }
+
+    @Override
+    public String getExperience() {
+        return this.experience;
+    }
+
+    @Override
+    public String getKeySkills() {
+        return this.keySkills;
+    }
+
 }
