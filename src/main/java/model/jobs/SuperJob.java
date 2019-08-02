@@ -15,16 +15,17 @@ import java.util.TreeMap;
 
 public class SuperJob extends JobSite {
     private static final String basicURL = "https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?";
+    private  HttpURLConnection connection;
+
+    private  int countCondition;
+    private  String keySkills = "";
+    private  String profession = "";
+    private  String experience = "";
+    private  String education = "";
 
 
-    private static HttpURLConnection connection;
-
-
-    private static int countCondition;
-    private static String keySkills;
-    private static String profession;
-    private static String experience;
-    private static String education;
+    private  Map<String, Integer> educationMap;
+    private  Map<String, String> experienceMap;
 
     private String requestToWebsait(String urlToRead) {
         BufferedReader reader;
@@ -81,8 +82,6 @@ public class SuperJob extends JobSite {
 
 
 
-    private static Map<String, Integer> educationMap;
-    private static Map<String, String> experienceMap;
 
 
     public SuperJob() {
@@ -113,15 +112,17 @@ public class SuperJob extends JobSite {
 
     @Override
     public void setProf(String prof) {
-        this.profession = "&keywords[" + countCondition + "][srws]=60&keywords[" + countCondition + "" +
-                "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(prof);
-        countCondition++;
+        if (!prof.equals("")) {
+            this.profession = "&keywords[" + countCondition + "][srws]=60&keywords[" + countCondition + "" +
+                    "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(prof);
+            countCondition++;
+        }
     }
 
 
     @Override
     public void setEducation(String education) {
-        this.education = "&education=" + educationMap.get(education) + "&moveable=2&moveable=2";
+        this.education = "&education=" + educationMap.get(education);
     }
 
 
@@ -133,13 +134,15 @@ public class SuperJob extends JobSite {
 
     @Override
     public void setKeySkills(String[] skills) {
-        StringBuilder builderSkills = new StringBuilder();
-        for (String skill: skills) {
-            builderSkills.append("&keywords[" + countCondition + "][srws]=3&keywords[" + countCondition +
-                    "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(skill));
-            countCondition++;
+        if (skills != null) {
+            StringBuilder builderSkills = new StringBuilder();
+            for (String skill : skills) {
+                builderSkills.append("&keywords[" + countCondition + "][srws]=3&keywords[" + countCondition +
+                        "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(skill));
+                countCondition++;
+            }
+            this.keySkills = builderSkills.toString();
         }
-        this.keySkills = builderSkills.toString();
     }
 
 

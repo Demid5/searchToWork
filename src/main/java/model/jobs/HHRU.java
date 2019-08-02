@@ -18,14 +18,13 @@ public class HHRU extends JobSite {
     static private String basicUrl = "https://hh.ru";
     static private final String basicURL = "https://hh.ru/search/resume?";
 
-    private static TreeMap<String, Integer> skill;
-    private static TreeMap<String, String> educationMap;
-    private static TreeMap<String, String> experienceMap;
+    private  TreeMap<String, String> educationMap;
+    private  TreeMap<String, String> experienceMap;
 
-    private static String keySkills;
-    private static String profession;
-    private static String experience;
-    private static String education;
+    private  String keySkills = "";
+    private  String profession = "";
+    private  String experience = "";
+    private  String education = "";
 
     public HHRU() {
 
@@ -39,7 +38,7 @@ public class HHRU extends JobSite {
         experienceMap.put("От 1 года до 3 лет", "between1And3");
         experienceMap.put("От 3 до 6 лет", "between3And6");
         experienceMap.put("Более 6 лет", "moreThan6");
-        experienceMap.put("не имеет значения", "noExperience");
+        experienceMap.put("не имеет значения", "");
     }
 
 
@@ -47,10 +46,10 @@ public class HHRU extends JobSite {
     public List<String> organizationLinks() {
         String url = buildURL();
         List<String> resultLinks = new LinkedList<>();
+        int countResume = 0;
         boolean flag = true;
         do {
             try {
-
                 Document document = Jsoup.connect(url).userAgent("Chrome/4.0.249.0 Safari/532.5")
                         .referrer("http://www.google.com")
                         .get();
@@ -60,6 +59,7 @@ public class HHRU extends JobSite {
                     if (!elem.text().equals("")) {
                         resultLinks.add(basicUrl + elem.attr("href"));
                     }
+                    countResume++;
                 }
 
                 try {
@@ -71,7 +71,7 @@ public class HHRU extends JobSite {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } while (flag);
+        } while (flag && countResume < 20);
         return resultLinks;
     }
 
@@ -94,7 +94,9 @@ public class HHRU extends JobSite {
         * getters and setters */
     @Override
     public void setProf(String prof) {
-        this.profession = "&text=" + convertStringText(prof) + "&logic=normal&pos=position&exp_period=all_time";
+        if (!prof.equals("")) {
+            this.profession = "&text=" + convertStringText(prof) + "&logic=normal&pos=position&exp_period=all_time";
+        }
     }
 
 
@@ -113,11 +115,13 @@ public class HHRU extends JobSite {
 
     @Override
     public void setKeySkills(String[] skills) {
-        StringBuilder builderSkills = new StringBuilder();
-        for (String skill: skills) {
-            builderSkills.append("&text=" + skill + "&logic=normal&pos=keywords&exp_period=all_time");
+        if (skills != null) {
+            StringBuilder builderSkills = new StringBuilder();
+            for (String skill: skills) {
+                builderSkills.append("&text=" + skill + "&logic=normal&pos=keywords&exp_period=all_time");
+            }
+            this.keySkills = builderSkills.toString();
         }
-        this.keySkills = builderSkills.toString();
     }
 
 

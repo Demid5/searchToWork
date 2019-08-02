@@ -38,19 +38,20 @@ public class pageController {
             sait = (JobSite) nameOfSait.newInstance();
             sait.setProf(request.getParameter("profession"));
             sait.setEducation(request.getParameter("education"));
-            sait.setKeySkills(request.getParameterValues("skill"));
+            try { sait.setKeySkills(request.getParameterValues("skill"));
+            } catch (NullPointerException e) { }
             sait.setExperience(request.getParameter("experience"));
             resultLinks.addAll(sait.organizationLinks());
         }
 
         modelAndView.addObject("resultList", resultLinks);
-        } catch (NullPointerException e) {
-
-        } catch (ClassNotFoundException e) {
+        }  catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return modelAndView;
