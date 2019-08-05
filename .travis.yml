@@ -9,13 +9,6 @@ notifications:
       - demkozlov@yandex.ru
     on_success: always
     on_failure: always
-addons:
-  sonarcloud:
-    organization: demid5
-    token:
-      secure: mrK2MUmn2g5S2UW+m5CFDszqLTx5c24603b/sGUBnfkLfbsmEnUAaHvmWcpgv0lEoR3IMCQ6lNpVkHAJ1JppgQGu3kvzqRt/VnMGg3rL48y/Yy934p0jMuc779YiiL+qiLVHc7S7KkfpYD9pmBlH3E8QWyEKuHmUgsgSvqSG2u2uky5a/AiupSeGquH7jcgy4HOWF6mqEUHLQXTA+RiPXIDjqgaQIOmgJseTOAw5TukhQgq5kaTNo5vpdA1xPFTBv2KQ1EX2y1oTe6oSBqR+HnuAgUAXnGSOEULVRWbcnjy28Jpl2hrUb0e2INfMiiHRpeBSjIpS7hl989V69vtMuK/KKC6r4R3M+RJs19lQuZkK/YPT3Oj2oXGT99qFQv5vX61QEWlNtIpMPnFdFAOY/5Wte/Qtztr4RbBvjEmSldT3Efnw9RgdIAagoLRW6zq4rKFi17NFpcUtGaW4GfzK3vuruej3fKVPr5G8CkbrLSkUuYMKEepq6vo7Ui/4qd4tUiokZXHNk5aIsYikVLWBoHDhO+JvIv9D+9oVekuuR7AnDk0vAlEpmp16QFIRCi3T4C4zf82fsGi1RauvuucywRrgQfEVVRlI92XsAC6YrEPKM8oXlFIuirKpSqjc/AH8rPvTI1qFjVoT2Jn/NWdaynZWuWG0G83Vn5nEo9Jo+Ms=
-script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Demid5_searchToWork
 deploy:
   provider: heroku
   app: test-app-search
