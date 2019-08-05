@@ -9,8 +9,3 @@ notifications:
       - demkozlov@yandex.ru
     on_success: always
     on_failure: always
-deploy:
-  provider: heroku
-  app: test-app-search
-  api_key:
-    secure: xetwYAx6D7sAdosGnG4pvpzflWpGUUyPFCDROV+J7xdj9bYluo1YPuMtayu/gwOTENIWR9vy4sEdbXPvSWGN5MYE4043AIQ2OZLFvoAmYcTGUsDZPcz3VrgB05BJrWxsTk7KwtRuCnB5lDX71m2Ai7US5CnXEejnMSkH65UBEMsG4ghtTfxMDzdoo9MzabJuQ06DD3F4UIumczXWGnaZ3fO1XpTr1lgBvVK2oHDSHBGy/TTh4aTp3Z69zZHmzK3S/aRWWL2nHQ7W65+PVkcwp6hb6BUIbLSGSNjWEzRR2G5AMwwGjHwNCWWp1nlxRsVgX2/XgfbDBlX7PUQAsernQky2gl0S/FxGW7ceYRzF7EUrG7zVRM5ZsyqxzU3AMCqvA1DNOr08WK8rXFQaDt2o7ygK1loq5PDaObGaYF7vZvxxviu8l2enCefLy35xnPWMY7bXLlqY5Zqa5H4l/jJdAGCMCGo0PMMr/Q/GRfJavSPvp51C+qvF0ptYXrThygU4ebcaIODHp84yOge+gCkkxfiwRseXsZd/5Jwmd1MOwgju2zUBp75CY2uOX8x1ztncIMt+IxycMbADaVCFJZWm/X5h5E1Xgh5m2VlahabUxdpC6jozoqRtpeO5V5ZX1jBJzXuhI7i6DUpuXy3J8GVtLhqWDqBwHL7GrJwbLXw8Y3o=
