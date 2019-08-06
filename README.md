@@ -1,6 +1,1 @@
-# searchToWork
-search a condidates to it-work
-dsssssssssdjkahdjks
-dsadsadsa
-333 commit
-
+[![Build Status](https://travis-ci.org/Demid5/searchToWork.svg?branch=master)](https://travis-ci.org/Demid5/searchToWork)
