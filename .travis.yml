@@ -15,19 +15,4 @@ notifications:
     on_success: always # default: change
     on_failure: always # default: always
 
-addons:
-      sonarcloud:
-        organization: "demid5" # the key of the org you chose at step #3
-        token:
-          secure: "mrK2MUmn2g5S2UW+m5CFDszqLTx5c24603b/sGUBnfkLfbsmEnUAaHvmWcpgv0lEoR3IMCQ6lNpVkHAJ1JppgQGu3kvzqRt/VnMGg3rL48y/Yy934p0jMuc779YiiL+qiLVHc7S7KkfpYD9pmBlH3E8QWyEKuHmUgsgSvqSG2u2uky5a/AiupSeGquH7jcgy4HOWF6mqEUHLQXTA+RiPXIDjqgaQIOmgJseTOAw5TukhQgq5kaTNo5vpdA1xPFTBv2KQ1EX2y1oTe6oSBqR+HnuAgUAXnGSOEULVRWbcnjy28Jpl2hrUb0e2INfMiiHRpeBSjIpS7hl989V69vtMuK/KKC6r4R3M+RJs19lQuZkK/YPT3Oj2oXGT99qFQv5vX61QEWlNtIpMPnFdFAOY/5Wte/Qtztr4RbBvjEmSldT3Efnw9RgdIAagoLRW6zq4rKFi17NFpcUtGaW4GfzK3vuruej3fKVPr5G8CkbrLSkUuYMKEepq6vo7Ui/4qd4tUiokZXHNk5aIsYikVLWBoHDhO+JvIv9D+9oVekuuR7AnDk0vAlEpmp16QFIRCi3T4C4zf82fsGi1RauvuucywRrgQfEVVRlI92XsAC6YrEPKM8oXlFIuirKpSqjc/AH8rPvTI1qFjVoT2Jn/NWdaynZWuWG0G83Vn5nEo9Jo+Ms="
-      # encrypted value of your token
-script:
-      # other script steps might be done before running the actual analysis
-    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Demid5_searchToWork
-
-deploy:
-      provider: heroku
-      app: test-app-search
-        api_key:
-          secure: "xetwYAx6D7sAdosGnG4pvpzflWpGUUyPFCDROV+J7xdj9bYluo1YPuMtayu/gwOTENIWR9vy4sEdbXPvSWGN5MYE4043AIQ2OZLFvoAmYcTGUsDZPcz3VrgB05BJrWxsTk7KwtRuCnB5lDX71m2Ai7US5CnXEejnMSkH65UBEMsG4ghtTfxMDzdoo9MzabJuQ06DD3F4UIumczXWGnaZ3fO1XpTr1lgBvVK2oHDSHBGy/TTh4aTp3Z69zZHmzK3S/aRWWL2nHQ7W65+PVkcwp6hb6BUIbLSGSNjWEzRR2G5AMwwGjHwNCWWp1nlxRsVgX2/XgfbDBlX7PUQAsernQky2gl0S/FxGW7ceYRzF7EUrG7zVRM5ZsyqxzU3AMCqvA1DNOr08WK8rXFQaDt2o7ygK1loq5PDaObGaYF7vZvxxviu8l2enCefLy35xnPWMY7bXLlqY5Zqa5H4l/jJdAGCMCGo0PMMr/Q/GRfJavSPvp51C+qvF0ptYXrThygU4ebcaIODHp84yOge+gCkkxfiwRseXsZd/5Jwmd1MOwgju2zUBp75CY2uOX8x1ztncIMt+IxycMbADaVCFJZWm/X5h5E1Xgh5m2VlahabUxdpC6jozoqRtpeO5V5ZX1jBJzXuhI7i6DUpuXy3J8GVtLhqWDqBwHL7GrJwbLXw8Y3o="
 
