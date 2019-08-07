@@ -117,6 +117,9 @@ public class SuperJob extends JobSite {
                     "][skwc]=and&keywords[" + countCondition + "][keys]=" + convertStringText(prof);
             countCondition++;
         }
+        else {
+            this.profession = "";
+        }
     }
 
 
