@@ -41,8 +41,6 @@ public class HHRU extends JobSite {
         experienceMap.put("не имеет значения", "");
     }
 
-
-
     public List<String> organizationLinks() {
         String url = buildURL();
         List<String> resultLinks = new LinkedList<>();
