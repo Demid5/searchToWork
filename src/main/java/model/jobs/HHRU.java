@@ -97,6 +97,9 @@ public class HHRU extends JobSite {
         if (!prof.equals("")) {
             this.profession = "&text=" + convertStringText(prof) + "&logic=normal&pos=position&exp_period=all_time";
         }
+        else {
+            this.profession = "";
+        }
     }
 
 

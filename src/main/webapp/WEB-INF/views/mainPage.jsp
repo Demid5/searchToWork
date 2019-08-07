@@ -17,6 +17,9 @@
 <div id="blockCriteries">
 <form action="/" method="POST">
     <p>В каких сайтах будем искать</p>
+    <c:if test="${empty film.title}">
+        <title>Add</title>
+    </c:if>
     <p><input type="checkbox" name="websait" value="HHRU">HH.RU   <input type="checkbox" name="websait" value="SuperJob"> SuperJob.ru   <input type="checkbox" name="websait" value="GorodRabot.ru">GorodRabot.ru</p>
 
     <br><br>
