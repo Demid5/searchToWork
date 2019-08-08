@@ -119,7 +119,7 @@ public class HHRU extends JobSite {
         if (skills != null) {
             StringBuilder builderSkills = new StringBuilder();
             for (String skill: skills) {
-                builderSkills.append("&text=" + skill + "&logic=normal&pos=keywords&exp_period=all_time");
+                builderSkills.append("&text=" + convertStringText(skill) + "&logic=normal&pos=keywords&exp_period=all_time");
             }
             this.keySkills = builderSkills.toString();
         }

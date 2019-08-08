@@ -43,8 +43,6 @@ public class pageController {
             sait.setExperience(request.getParameter("experience"));
             resultLinks.addAll(sait.organizationLinks());
         }
-
-        modelAndView.addObject("resultList", resultLinks);
         }  catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -53,6 +51,8 @@ public class pageController {
             e.printStackTrace();
         } catch (NullPointerException e) {
             e.printStackTrace();
+        } finally {
+            modelAndView.addObject("resultList", resultLinks);
         }
         return modelAndView;
     }
