@@ -67,7 +67,6 @@ public class RabotaRU extends JobSite {
                 countResume++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return resultLinks;
     }
