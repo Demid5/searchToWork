@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class RabotaRUTest {
@@ -26,6 +28,10 @@ public class RabotaRUTest {
 
     @Test
     public void organizationLinks() {
+        String url = rabotaRU.buildURL();
+        List<String> expected = rabotaRU.organizationLinks();
+        List<String> actual = rabotaRU.organizationLinks();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -66,9 +72,14 @@ public class RabotaRUTest {
         String actual = rabotaRU.getEducation();
         Assert.assertEquals(expected, actual);
     }
+
     @Test
     public void setExperience() {
-
+        String input = "От 1 года до 3 лет";
+        String expected = "&eylo=1";
+        rabotaRU.setExperience(input);
+        String actual = rabotaRU.getExperience();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
