@@ -8,19 +8,10 @@ import static org.junit.Assert.*;
 
 public class HHRUTest {
 
-
-    private static String keySkills;
-    private static String profession;
-    private static String experience;
-    private static String education;
     static HHRU hhru;
 
     @BeforeClass
     public static void init() {
-        keySkills = "";
-        profession = "";
-        experience = "";
-        education = "";
         hhru = new HHRU();
     }
 

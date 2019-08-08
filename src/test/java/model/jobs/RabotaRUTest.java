@@ -8,18 +8,11 @@ import static org.junit.Assert.*;
 
 public class RabotaRUTest {
 
-    private static String keySkills;
-    private static String profession;
-    private static String experience;
-    private static String education;
+
     static RabotaRU rabotaRU;
 
     @BeforeClass
     public static void init() {
-        keySkills = "";
-        profession = "";
-        experience = "";
-        education = "";
         rabotaRU = new RabotaRU();
     }
 
@@ -56,7 +49,26 @@ public class RabotaRUTest {
     }
 
     @Test
+    public void setProfNull() {
+        String input = "";
+        String expected = "&qk%5B0%5D=" + "&qot%5B0%5D=1&qsa%5B0%5D%5B%5D=2";
+        rabotaRU.setProf(input);
+        String actual = rabotaRU.getProf();
+        Assert.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void setEducationHigher() {
+        String input = "высшее";
+        String expected = "&e%5B%5D=4";
+        rabotaRU.setEducation(input);
+        String actual = rabotaRU.getEducation();
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
     public void setExperience() {
+
     }
 
     @Test
