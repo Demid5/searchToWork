@@ -20,7 +20,7 @@ public class RabotaRU extends JobSite {
     private int countCondition;
 
     public RabotaRU() {
-        super.setBasicUrl("https://www.rabota.ru/v3_searchResumeByParamsResults.html?action=search&area=v3_searchResumeByParamsResults&p=-2005&w=&qk%5B0%5D=");
+        setBasicUrl("https://www.rabota.ru/v3_searchResumeByParamsResults.html?action=search&area=v3_searchResumeByParamsResults&p=-2005&w=&qk%5B0%5D=");
         countCondition = 0;
 
         educationMap = new TreeMap<String, String>();

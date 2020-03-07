@@ -9,7 +9,7 @@ public abstract class JobSite {
         BASIC_URL = basicUrl;
     }
 
-    protected static String getBasicURL() {
+    public static String getBasicURL() {
         return BASIC_URL;
     }
 

@@ -76,12 +76,11 @@ public class SuperJob extends JobSite {
     }
 
     public SuperJob() {
-        setBasicUrl("https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?");
         educationMap = new TreeMap<>();
         educationMap.put("высшее", 2);
         educationMap.put("среднее", 5);
         educationMap.put("не имеет значения", 6);
-
+        setBasicUrl("https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?");
         experienceMap = new TreeMap<>();
         experienceMap.put("не имеет значения", "");
         experienceMap.put("От 1 года до 3 лет", "&experience_from=12&experience_to=36");
@@ -94,8 +93,8 @@ public class SuperJob extends JobSite {
     /*getters and setters*/
 
     static private String convertStringText(String text) {
-        String plusSign = "\\u002B";
         String resultText = text.replace(" ", "%20");
+        String plusSign = "\\u002B";
         resultText = resultText.replaceAll(plusSign, "%2B");
         return resultText.replace("/", "%2F");
     }
