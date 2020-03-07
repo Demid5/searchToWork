@@ -1,0 +1,34 @@
+#blockCriteries {
+    overflow: auto;
+    background: lightgoldenrodyellow;
+    text-align: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 170%;
+    float:left;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+#resultLink {
+    overflow: auto;
+    background: paleturquoise;
+    text-align: center;
+    vertical-align: middle;
+    width: 75%;
+    height: 170%;
+    float:right;
+    margin: auto;
+}
+
+#textResultLinks {
+    text-align: center;
+    text-decoration: underline;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 120%;
+}
+
+h1 {
+    color:darkgreen;
+    text-align: center;
+}
