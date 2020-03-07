@@ -5,11 +5,11 @@ import java.util.List;
 public abstract class JobSite {
     private static String BASIC_URL;
 
-    protected void setBasicUrl(String basicUrl) {
+    protected static void setBasicUrl(String basicUrl) {
         BASIC_URL = basicUrl;
     }
 
-    protected String getBasicURL() {
+    protected static String getBasicURL() {
         return BASIC_URL;
     }
 
