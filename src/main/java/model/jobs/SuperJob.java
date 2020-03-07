@@ -104,7 +104,7 @@ public class SuperJob extends JobSite {
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
         String resultText = text.replace(" ", "%20");
-        resultText = resultText.replace(plusSign, "%2B");
+        resultText = resultText.replaceAll(plusSign, "%2B");
         return resultText.replace("/", "%2F");
     }
 

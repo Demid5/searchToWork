@@ -82,7 +82,7 @@ public class HHRU extends JobSite {
 
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
-        String resultText = text.replace(plusSign, "%2B");
+        String resultText = text.replaceAll(plusSign, "%2B");
         resultText = resultText.replace(" ", "+");
         return resultText.replace("/", "%2F");
     }
