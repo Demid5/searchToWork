@@ -19,14 +19,6 @@ public class RabotaRUTest {
     }
 
     @Test
-    public void organizationLinks() {
-        String url = rabotaRU.buildURL();
-        List<String> expected = rabotaRU.organizationLinks();
-        List<String> actual = rabotaRU.organizationLinks();
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
     public void setKeySkills() {
         String input[] = {"Java", "JavaScript"};
         String expected = "&qk%5B1%5D=Java&qot%5B1%5D=1&qsa%5B1%5D%5B%5D=4" +
