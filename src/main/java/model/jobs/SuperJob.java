@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SuperJob extends JobSite {
-    private static final String BASIC_URL = "https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?";
     private  HttpURLConnection connection;
 
     private  int countCondition;
@@ -76,15 +75,8 @@ public class SuperJob extends JobSite {
         return resultLinks;
     }
 
-    protected String getBasicURL() {
-        return BASIC_URL;
-    }
-
-
-
-
-
     public SuperJob() {
+        setBasicUrl("https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?");
         educationMap = new TreeMap<>();
         educationMap.put("высшее", 2);
         educationMap.put("среднее", 5);

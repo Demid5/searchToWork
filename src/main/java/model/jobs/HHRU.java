@@ -5,17 +5,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.servlet.ServletContext;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.TreeMap;
 
 public class HHRU extends JobSite {
-    private static String BASIC_URL = "https://hh.ru";
     private static final String SEARCH_HH_URL = "https://hh.ru/search/resume?";
 
     private  TreeMap<String, String> educationMap;
@@ -27,7 +22,7 @@ public class HHRU extends JobSite {
     private  String education = "";
 
     public HHRU() {
-
+        super.setBasicUrl("https://hh.ru");
         educationMap = new TreeMap<>();
         educationMap.put("высшее", "higher");
         educationMap.put("среднее", "secondary");
@@ -55,12 +50,12 @@ public class HHRU extends JobSite {
 
                 for (Element elem : element.select("a")) {
                     if (!elem.text().equals("")) {
-                        resultLinks.add(BASIC_URL + elem.attr("href"));
+                        resultLinks.add(super.getBasicURL() + elem.attr("href"));
                     }
                     countResume++;
                 }
 
-                url = BASIC_URL + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
+                url = super.getBasicURL() + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
 
             } catch (IOException e) {
                 e.printStackTrace();

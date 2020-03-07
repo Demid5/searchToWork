@@ -3,7 +3,15 @@ package model.jobs;
 import java.util.List;
 
 public abstract class JobSite {
-    abstract protected String getBasicURL();
+    private static String BASIC_URL;
+
+    protected void setBasicUrl(String basicUrl) {
+        BASIC_URL = basicUrl;
+    }
+
+    protected String getBasicURL() {
+        return BASIC_URL;
+    }
 
     public String buildURL() {
         return getBasicURL() + getEducation() + getProf() + getKeySkills()  + getExperience();
