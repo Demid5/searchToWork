@@ -16,14 +16,6 @@ public class HHRUTest {
     }
 
     @Test
-    public void organizationLinks() {
-    }
-
-    @Test
-    public void getBasicURL() {
-    }
-
-    @Test
     public void setProfNull() {
         String expected = "";
         hhru.setProf(expected);
@@ -60,31 +52,11 @@ public class HHRUTest {
 
 
     @Test
-    public void setExperience() {
-    }
-
-    @Test
     public void setKeySkills() {
         String input[] = {"java", "javascript"};
         String expected = "&text=java&logic=normal&pos=keywords&exp_period=all_time&text=javascript&logic=normal&pos=keywords&exp_period=all_time";
         hhru.setKeySkills(input);
         String actual = hhru.getKeySkills();
         Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void getProf() {
-    }
-
-    @Test
-    public void getEducation() {
-    }
-
-    @Test
-    public void getExperience() {
-    }
-
-    @Test
-    public void getKeySkills() {
     }
 }

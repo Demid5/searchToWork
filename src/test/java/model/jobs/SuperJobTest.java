@@ -16,14 +16,6 @@ public class SuperJobTest {
     }
 
     @Test
-    public void organizationLinks() {
-    }
-
-    @Test
-    public void getBasicURL() {
-    }
-
-    @Test
     public void setProfNull() {
         String expected = "";
         superJob.setProf(expected);
@@ -58,11 +50,6 @@ public class SuperJobTest {
         Assert.assertEquals(expected, actual);
     }
 
-
-    @Test
-    public void setExperience() {
-    }
-
     @Test
     public void setKeySkills() {
         String input[] = {"java", "javascript"};
@@ -76,21 +63,5 @@ public class SuperJobTest {
         superJob.setKeySkills(input);
         String actual = superJob.getKeySkills();
         Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void getProf() {
-    }
-
-    @Test
-    public void getEducation() {
-    }
-
-    @Test
-    public void getExperience() {
-    }
-
-    @Test
-    public void getKeySkills() {
     }
 }

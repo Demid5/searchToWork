@@ -16,7 +16,7 @@ import java.util.TreeMap;
 
 public class HHRU extends JobSite {
     static private String basicUrl = "https://hh.ru";
-    static private final String basicURL = "https://hh.ru/search/resume?";
+    static private final String searchHhUrl = "https://hh.ru/search/resume?";
 
     private  TreeMap<String, String> educationMap;
     private  TreeMap<String, String> experienceMap;
@@ -76,7 +76,7 @@ public class HHRU extends JobSite {
 
     @Override
     public String getBasicURL() {
-        return basicURL;
+        return searchHhUrl;
     }
 
 

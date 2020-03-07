@@ -19,14 +19,6 @@ public class RabotaRUTest {
     }
 
     @Test
-    public void buildURL() {
-    }
-
-    @Test
-    public void getBasicURL() {
-    }
-
-    @Test
     public void organizationLinks() {
         String url = rabotaRU.buildURL();
         List<String> expected = rabotaRU.organizationLinks();
@@ -80,25 +72,5 @@ public class RabotaRUTest {
         rabotaRU.setExperience(input);
         String actual = rabotaRU.getExperience();
         Assert.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setEducation() {
-    }
-
-    @Test
-    public void getEducation() {
-    }
-
-    @Test
-    public void getKeySkills() {
-    }
-
-    @Test
-    public void getProf() {
-    }
-
-    @Test
-    public void getExperience() {
     }
 }
