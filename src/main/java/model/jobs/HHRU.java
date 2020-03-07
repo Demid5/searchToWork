@@ -66,13 +66,6 @@ public class HHRU extends JobSite {
         return resultLinks;
     }
 
-
-    @Override
-    public String getBasicURL() {
-        return SEARCH_HH_URL;
-    }
-
-
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
         String resultText = text.replaceAll(plusSign, "%2B");
