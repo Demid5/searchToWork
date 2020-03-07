@@ -30,7 +30,7 @@ public class SuperJob extends JobSite {
     private String requestToWebsait(String urlToRead) {
         BufferedReader reader;
         String line;
-        StringBuffer responseContent = new StringBuffer();
+        StringBuilder responseContent = new StringBuilder();
         try {
             URL url = new URL(urlToRead);
             connection = (HttpURLConnection) url.openConnection();

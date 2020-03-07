@@ -60,14 +60,12 @@ public class HHRU extends JobSite {
                     countResume++;
                 }
 
-                try {
-                    url = BASIC_URL + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
-                }catch (NullPointerException e) {
-                    flag = false;
-                }
+                url = BASIC_URL + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
 
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                flag = false;
             }
         } while (flag && countResume < 20);
         return resultLinks;

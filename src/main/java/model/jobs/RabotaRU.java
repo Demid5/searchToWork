@@ -55,19 +55,22 @@ public class RabotaRU extends JobSite {
         List<String> resultLinks = new LinkedList<String>();
         int countResume = 0;
         boolean flag = true;
+        Document document = null;
         try {
-            Document document = Jsoup.connect(url).userAgent("Chrome/4.0.249.0 Safari/532.5")
-                    .referrer("http://www.google.com")
-                    .get();
-            Elements element = document.select("#js-search-results-wrapper > div > div > div.resume-search-left");
+            document = Jsoup.connect(url).userAgent("Chrome/4.0.249.0 Safari/532.5")
+                        .referrer("http://www.google.com")
+                        .get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Elements element = document.select("#js-search-results-wrapper > div > div > div.resume-search-left");
             for (Element elem : element.select("a")) {
                 if (!elem.text().equals("")) {
                     resultLinks.add(elem.attr("href"));
                 }
                 countResume++;
             }
-        } catch (IOException e) {
-        }
         return resultLinks;
     }
 

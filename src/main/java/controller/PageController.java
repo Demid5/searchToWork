@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-public class pageController {
+public class PageController {
     private static String[] jobsaits;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -38,8 +38,7 @@ public class pageController {
             sait = (JobSite) nameOfSait.newInstance();
             sait.setProf(request.getParameter("profession"));
             sait.setEducation(request.getParameter("education"));
-            try { sait.setKeySkills(request.getParameterValues("skill"));
-            } catch (NullPointerException e) { }
+            sait.setKeySkills(request.getParameterValues("skill"));
             sait.setExperience(request.getParameter("experience"));
             resultLinks.addAll(sait.organizationLinks());
         }
@@ -56,13 +55,4 @@ public class pageController {
         }
         return modelAndView;
     }
-
-    /*@RequestMapping(value = "/postUser", method = RequestMethod.POST)
-    public ModelAndView editPage() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("postuser");
-        return modelAndView;
-    }*/
-
-
 }
