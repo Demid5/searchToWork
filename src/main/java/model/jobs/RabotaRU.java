@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 public class RabotaRU extends JobSite {
 
-    static private final String basicURL = "https://www.rabota.ru/v3_searchResumeByParamsResults.html?action=search&area=v3_searchResumeByParamsResults&p=-2005&w=&qk%5B0%5D=";
+    static private final String BASIC_URL = "https://www.rabota.ru/v3_searchResumeByParamsResults.html?action=search&area=v3_searchResumeByParamsResults&p=-2005&w=&qk%5B0%5D=";
 
     private TreeMap<String, String> educationMap;
     private  TreeMap<String, String> experienceMap;
@@ -46,7 +46,7 @@ public class RabotaRU extends JobSite {
 
     @Override
     protected String getBasicURL() {
-        return basicURL;
+        return BASIC_URL;
     }
 
     @Override
@@ -86,9 +86,9 @@ public class RabotaRU extends JobSite {
 
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
-        String resultText = text.replaceAll(plusSign, "%2B");
-        resultText = resultText.replaceAll(" ", "+");
-        return resultText.replaceAll("/", "%2F");
+        String resultText = text.replace(plusSign, "%2B");
+        resultText = resultText.replace(" ", "+");
+        return resultText.replace("/", "%2F");
     }
 
     @Override

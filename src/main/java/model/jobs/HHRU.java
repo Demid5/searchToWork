@@ -15,8 +15,8 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 public class HHRU extends JobSite {
-    static private String basicUrl = "https://hh.ru";
-    static private final String searchHhUrl = "https://hh.ru/search/resume?";
+    private static String BASIC_URL = "https://hh.ru";
+    private static final String SEARCH_HH_URL = "https://hh.ru/search/resume?";
 
     private  TreeMap<String, String> educationMap;
     private  TreeMap<String, String> experienceMap;
@@ -55,13 +55,13 @@ public class HHRU extends JobSite {
 
                 for (Element elem : element.select("a")) {
                     if (!elem.text().equals("")) {
-                        resultLinks.add(basicUrl + elem.attr("href"));
+                        resultLinks.add(BASIC_URL + elem.attr("href"));
                     }
                     countResume++;
                 }
 
                 try {
-                    url = basicUrl + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
+                    url = BASIC_URL + document.selectFirst("body > div.HH-MainContent.HH-Supernova-MainContent > div > div > div.bloko-columns-wrapper > div > div > div.bloko-gap.bloko-gap_top > div > div > div.bloko-column.bloko-column_l-13.bloko-column_m-9 > div.bloko-gap.bloko-gap_top > div > a").attr("href");
                 }catch (NullPointerException e) {
                     flag = false;
                 }
@@ -76,15 +76,15 @@ public class HHRU extends JobSite {
 
     @Override
     public String getBasicURL() {
-        return searchHhUrl;
+        return SEARCH_HH_URL;
     }
 
 
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
-        String resultText = text.replaceAll(plusSign, "%2B");
-        resultText = resultText.replaceAll(" ", "+");
-        return resultText.replaceAll("/", "%2F");
+        String resultText = text.replace(plusSign, "%2B");
+        resultText = resultText.replace(" ", "+");
+        return resultText.replace("/", "%2F");
     }
 
 

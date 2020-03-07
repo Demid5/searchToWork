@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class SuperJob extends JobSite {
-    private static final String basicURL = "https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?";
+    private static final String BASIC_URL = "https://api.superjob.ru/2.0/v3.h.3701842.65a8ac506fde19dbb50a8f9c5f1c4ef12228ed09.3f7d4147d9503b8799041689f2347d5406ca7e79/resumes/?";
     private  HttpURLConnection connection;
 
     private  int countCondition;
@@ -77,7 +77,7 @@ public class SuperJob extends JobSite {
     }
 
     protected String getBasicURL() {
-        return basicURL;
+        return BASIC_URL;
     }
 
 
@@ -103,9 +103,9 @@ public class SuperJob extends JobSite {
 
     static private String convertStringText(String text) {
         String plusSign = "\\u002B";
-        String resultText = text.replaceAll(" ", "%20");
-        resultText = resultText.replaceAll(plusSign, "%2B");
-        return resultText.replaceAll("/", "%2F");
+        String resultText = text.replace(" ", "%20");
+        resultText = resultText.replace(plusSign, "%2B");
+        return resultText.replace("/", "%2F");
     }
 
 

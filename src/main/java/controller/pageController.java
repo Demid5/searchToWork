@@ -25,7 +25,7 @@ public class pageController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView allFilmss(HttpServletRequest request) {
+    public static ModelAndView allFilmss(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainPage");
         List<String> resultLinks = new ArrayList<>();
